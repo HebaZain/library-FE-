@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import AddForm from "./AdminPages/AddForm";
+import Admin_Dash from "./AdminPages/Dashboard";
+import { BrowserRouter , Route , Routes } from "react-router-dom";
+import Home from "./HomePage/Home";
+import DisplayBooks from "./AdminPages/DisplayBooks";
+
+//npm i react-router-dom
+//npm i react-icons
+//npm i react-bootstrap
+//add in index.html <bootstrap link>
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+  <BrowserRouter>
+      <div className="App">
+      {/* <Home /> 
+      <Admin_Dash />
+      <AddForm /> 
+      <DisplayBooks />
+ */}
+       <Routes>
+          <Route path='/' exact element={ <Home />} />
+          <Route path='/Admin' exact element={<Admin_Dash />} />
+          <Route path='/logout' exact element={<Home />} /> 
+          <Route path='/addBooks' exact element={<AddForm />}  />
+          <Route path='/displayBooks' exact element={<DisplayBooks />} />
+        </Routes>  
+      </div>
+    </BrowserRouter>
     </div>
   );
 }

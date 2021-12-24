@@ -1,0 +1,42 @@
+.Add-Container{
+    margin-left: 520px;
+    padding-top: 2px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    text-align: center;
+    width: 370px;
+    height: auto;
+    border-radius: 30px;
+    margin-top: 70px;
+    background-color:burlywood;
+    padding-top: 30px;
+}
+.add-form{
+    text-align: left;
+    padding-left: 20px;
+
+}
+.input-add {
+    border-radius: 5px;
+    background-color:navajowhite;
+    border:navajowhite;
+    width: 280px;
+    height: 35px;
+    margin: 5px;
+    display: inline;
+}
+.input-add:focus{
+    outline:none;
+    color: navajowhite;
+}
+.addBook{
+    border-radius: 10px;
+    text-align: center;
+    background-color:navajowhite;
+    border-color: navajowhite;
+    width: 100px;
+    height: 50px;
+    margin: 5px;
+    margin-top: 10px;
+    margin-left: 95px;
+}

@@ -1,0 +1,29 @@
+.navBar-dashboard{
+    background-color: navajowhite;
+    background-size:50px;
+    height: 50px;
+    margin: 2px;
+    padding:10px;
+    padding-top: 13px;
+    border-radius: 10px;
+  
+  }
+  .font-dashboard{
+    padding-left:25px ;
+    margin-top: -23px;
+  }
+  .options{
+    text-align: center;
+    margin-top: 100px;
+  }
+  .btn-dashboard{
+    background-color: navajowhite;
+    height: 180px;
+    width: 180px;
+    border-radius: 5px;
+    border-color: navajowhite;
+    margin: 20px;
+  }
+  .icon-dashboard{
+    padding-bottom: 50px;
+  }
