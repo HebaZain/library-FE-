@@ -9,7 +9,7 @@ class AddForm extends Component{
                     Title: null,
                     Publisher: null,
                     Category: null,
-                    Price: null
+                    year: null
         };
     }
     handleChangeID =(e) => {
@@ -34,7 +34,7 @@ class AddForm extends Component{
     }
     handleChangePr =(e) => {
         this.setState({
-            Price: e.target.value,
+            year: e.target.value,
         })   
     }
   
@@ -45,18 +45,18 @@ class AddForm extends Component{
            // http://localhost:8080/libraryManApp-0.0.1-SNAPSHOT/addBookServlet?Id=3&title=Book3&publisher=Pub3&category=Cat3&price=19
             method :'post',
              body: JSON.stringify({
-                Id : this.state.Id,
+                ID : this.state.Id,
                 title: this.state.Title,
                 publisher: this.state.Publisher,
                 category: this.state.Category,
-                price: this.state.Price
+                year: this.state.year
              }) 
         }) 
-         let req={  Id : this.state.Id,
+         let req={  ID : this.state.Id,
             title: this.state.Title,
             publisher: this.state.Publisher,
             category: this.state.Category,
-            price: this.state.Price}
+            year: this.state.year}
             console.log(req);
             console.log(JSON.stringify(req));
 
@@ -117,12 +117,12 @@ class AddForm extends Component{
                     </div>
 
                     <div className="price">
-                        <label>Price:</label><br></br>
+                        <label>Year:</label><br></br>
                         <input  className="input-add" 
                         type='text' 
                         id="price" 
                         placeholder='input price' 
-                        value={this.state.Price}
+                        value={this.state.year}
                         onChange={this.handleChangePr} 
                         />
                     </div>  

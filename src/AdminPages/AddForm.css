@@ -27,7 +27,7 @@
 }
 .input-add:focus{
     outline:none;
-    color: navajowhite;
+    color: black;
 }
 .addBook{
     border-radius: 10px;
