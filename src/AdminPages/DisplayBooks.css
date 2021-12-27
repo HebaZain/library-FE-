@@ -19,7 +19,7 @@ h5{
 .table-display{
     margin:50px;
     border-color: burlywood;
-    height: 1000px;
+    height: 250px;
     width: 1200px;
     
 }
@@ -28,5 +28,5 @@ h5{
     height: 40px;
     width:40px;
     background-color: burlywood;
-    margin-top: -5px;
+    margin-top: 5px;
 }

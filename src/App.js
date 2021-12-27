@@ -20,13 +20,14 @@ function App() {
       <AddForm /> 
       <DisplayBooks />
  */}
-       <Routes>
+       <DisplayBooks />
+      {/*  <Routes>
           <Route path='/' exact element={ <Home />} />
           <Route path='/Admin' exact element={<Admin_Dash />} />
           <Route path='/logout' exact element={<Home />} /> 
           <Route path='/addBooks' exact element={<AddForm />}  />
           <Route path='/displayBooks' exact element={<DisplayBooks />} />
-        </Routes>  
+        </Routes>   */}
       </div>
     </BrowserRouter>
     </div>

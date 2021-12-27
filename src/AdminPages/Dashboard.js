@@ -16,7 +16,7 @@ class Admin_Dash extends Component{
                     <Link to="/addBooks"><button className="btn-dashboard"><i className='icon-dashboard'><FaFolderPlus size={50}/></i>
                     <br></br> Add Book</button> </Link>
                     <Link to= "/displayBooks"><button className="btn-dashboard"><i className='icon-dashboard'><FaFileAlt size={50}/></i>
-                    <br></br> All Book</button></Link>
+                    <br></br> All Books</button></Link>
                     <Link to = "/logout"><button className="btn-dashboard"><i className='icon-dashboard'><FaSignOutAlt size={50}/></i>
                     <br></br> Log out</button></Link>
 
