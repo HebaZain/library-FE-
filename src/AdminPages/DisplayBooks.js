@@ -4,6 +4,11 @@ import { FaTrashAlt } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 import { FaRegWindowClose } from "react-icons/fa";
 import * as ReactBootStarp from 'react-bootstrap';
+import { createBrowserHistory } from "history";
+ 
+
+
+import {Link} from "react-router-dom";
 import './DisplayBooks.css';
 class DisplayBooks extends Component{
      constructor(){
@@ -55,25 +60,41 @@ class DisplayBooks extends Component{
        
         document.body.style.backgroundImage="none";
         document.body.style.backgroundColor="navajowhite"; //navajowhite
-    }    
+    }   
+     /* returnID = (id) =>{
+        console.log("ID selected is ", id);
+      } */
+
     renderBooks= () => {
+        
          if(this.state.books.length > 0){
             console.log("ok")
         }else{
             console.log(" not ok")
         }   
+        const newTo = { 
+            pathname: "/Editbook/1", 
+            param1: "Par1" 
+          };
         const listItems = this.state.books.map((book) => 
         <tr key={book.ID}>
-        <td>{book.ID}</td>
-        <td>{book.title}</td>
-        <td>{book.publisher}</td>
-        <td>{book.category}</td>
-        <td>{book.year}</td>
-        <td>{book.hide}</td>
-        <td><button className='action-btn'><FaTrashAlt size={20}/></button>
-                <button className='action-btn'><FaEdit size={20}/> </button>
+            <td>{book.ID}</td>
+            <td>{book.title}</td>
+            <td>{book.publisher}</td>
+            <td>{book.category}</td>
+            <td>{book.year}</td>
+            <td>{book.hide}</td>
+            <td> 
+                <button className='action-btn'><FaTrashAlt size={20}/></button>
+                 <Link to={ newTo/* '/Editbook/:ID'+book.ID */} ><button className='action-btn'  
+                //"/Editbook"
+                /* onClick={ () => this.returnID(book.ID)}   */>
+                    <FaEdit size={20}/> 
+                </button>
+                 
+                </Link>
                 <button className='action-btn'><FaRegWindowClose size={20}/> </button>
-        </td> 
+            </td> 
         </tr>
         );
         return listItems;
@@ -94,7 +115,7 @@ class DisplayBooks extends Component{
             )
         })  */
     }
-
+    
     
     render(){
 
