@@ -15,15 +15,6 @@ class EditForm extends Component{
                 year: null
     }; 
     async componentDidMount() {
-        // let name = jwt.decode(token);
-       /*  console.log("%%%%%%")
-        console.log(this.props)
-        console.log(this.props.location.param1)
-        console.log(this.props.match.params) */
-        console.log("============")
-        console.log(this.props)
-
- 
          let response= await fetch(
              "http://localhost:8080/libraryManApp-0.0.1-SNAPSHOT/EditBookServlet?ID=" + this.props.match.params.ID,{
              method:"GET",

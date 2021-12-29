@@ -1,4 +1,6 @@
 import React , {Component} from "react";
+import { FaArrowCircleRight } from "react-icons/fa";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import './AddForm.css';
 class AddForm extends Component{
     constructor(){
@@ -61,6 +63,11 @@ class AddForm extends Component{
             console.log(JSON.stringify(req));
 
          console.log(response);
+         if(response.ok){
+             alert("Book added")
+         }else{
+             alert("Not added")
+         }
     } 
     componentDidMount() {
         document.body.style.backgroundImage="none";
@@ -70,6 +77,13 @@ class AddForm extends Component{
     render(){
         //console.log("========")
         return(
+            <div>
+                <div className="justifay-btn"> 
+                    <Link to="/displayBooks"><button className="navigate-display-page">
+                         Go To Display Books Page <FaArrowCircleRight size={20} />
+                    </button>
+                    </Link>
+                </div>
             <div className="Add-Container">
                 <h2>ADD NEW BOOK</h2>
                 <form className="add-form"  onSubmit={this.handleClick} method="post" action="addBook">
@@ -131,6 +145,7 @@ class AddForm extends Component{
                     <button className="addBook">ADD</button>
                 </form>
             </div>
+        </div>
         )
     }
 }

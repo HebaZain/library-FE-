@@ -4,12 +4,10 @@ import { FaTrashAlt } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 import { FaRegWindowClose } from "react-icons/fa";
 import * as ReactBootStarp from 'react-bootstrap';
-import { createBrowserHistory } from "history";
- 
-
-
+//import { createBrowserHistory } from "history";
 import {Link} from "react-router-dom";
 import './DisplayBooks.css';
+
 class DisplayBooks extends Component{
      constructor(){
         super()
@@ -61,9 +59,17 @@ class DisplayBooks extends Component{
         document.body.style.backgroundImage="none";
         document.body.style.backgroundColor="navajowhite"; //navajowhite
     }   
-     /* returnID = (id) =>{
-        console.log("ID selected is ", id);
-      } */
+
+    /* handleDelete = async () =>{
+        let resDelete = await fetch(" http://localhost:8080/libraryManApp-0.0.1-SNAPSHOT/DeleteBookServlet?ID=" + books.ID,{
+            method:"GET",
+            headers : { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+               },
+        })
+        console.log(resDelete)
+    } */
 
     renderBooks= () => {
         
@@ -72,10 +78,10 @@ class DisplayBooks extends Component{
         }else{
             console.log(" not ok")
         }   
-        const newTo = { 
+        /* const newTo = { 
             pathname: "/Editbook/1", 
             param1: "Par1" 
-          };
+          }; */
         const listItems = this.state.books.map((book) => 
         <tr key={book.ID}>
             <td>{book.ID}</td>
@@ -85,8 +91,26 @@ class DisplayBooks extends Component{
             <td>{book.year}</td>
             <td>{book.hide}</td>
             <td> 
-                <button className='action-btn'><FaTrashAlt size={20}/></button>
-                 <Link to={ newTo/* '/Editbook/:ID'+book.ID */} ><button className='action-btn'  
+                <button className='action-btn'>
+                <FaTrashAlt size={20}
+                onClick={ async () => {
+                    let resDelete = await fetch(" http://localhost:8080/libraryManApp-0.0.1-SNAPSHOT/DeleteBookServlet?ID=" + book.ID,{
+                    method:"GET",
+                    headers : { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                })
+                console.log(resDelete)
+                if(resDelete.ok){
+                    alert("Record deleted, please refresh the page")
+                }else {
+                    alert("Not deleted")
+                }
+                }}
+                />
+                </button> 
+                 <Link to={ /* newTo */ '/Editbook/'+book.ID} ><button className='action-btn'  
                 //"/Editbook"
                 /* onClick={ () => this.returnID(book.ID)}   */>
                     <FaEdit size={20}/> 
