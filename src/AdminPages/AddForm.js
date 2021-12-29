@@ -124,7 +124,8 @@ class AddForm extends Component{
                     <div className="category">
                         <label>Category:</label><br></br>
                         <input  className="input-add" 
-                        type='text' id="category"
+                        type='text' 
+                        id="category"
                         placeholder='input category'
                         value={this.state.Category}
                         onChange={this.handleChangeCa}

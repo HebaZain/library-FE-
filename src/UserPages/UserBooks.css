@@ -1,0 +1,30 @@
+.navBar-userBooks{
+    background-color: burlywood;
+    background-size:50px;
+    height: 50px;
+    margin: 5px;
+    padding:10px;
+    padding-top: 10px;
+    border-radius: 10px;
+  
+  }
+.user-books{
+    padding-left:25px ;
+    margin-top: -23px;
+}
+
+.category{
+    text-align: center;
+}
+.container-action{
+    width: 200px;
+    background-color: burlywood;
+    width: 250px;
+    border-radius: 5px;
+    margin: 20px;
+    padding-left: 5px;
+}
+.to-flex{
+    display: inline-grid;
+    
+}

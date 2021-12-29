@@ -4,6 +4,7 @@ import { BrowserRouter , Route , Switch } from "react-router-dom";
 import Home from "./HomePage/Home";
 import DisplayBooks from "./AdminPages/DisplayBooks";
 import EditForm from "./AdminPages/EditBook";
+import UserBooks from "./UserPages/UserBooks";
 // import { useParams } from "react-router-dom";
 
 //npm i react-router-dom
@@ -46,6 +47,7 @@ function App() {
           <Route path='/addBooks'  component={AddForm}  />
           <Route path='/displayBooks'  component={DisplayBooks}/>
           <Route path='/Editbook/:ID'  component={EditForm}/>
+          <Route path='/User' component={UserBooks} />
         </Switch>    
          
       </div>

@@ -11,7 +11,7 @@ function Home(){
             <div className="sign-as">
                 <h3>Sing in as :</h3>
                  <Link to='/Admin'> <button className="choose-sign" > <FaUserShield/>  Admin</button><br></br>  </Link> 
-                <button className="choose-sign"> <FaUser/> User</button>
+                <Link to='/User'><button className="choose-sign"> <FaUser/> User</button></Link>
             </div>
         </div>
     )
