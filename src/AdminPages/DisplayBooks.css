@@ -30,3 +30,19 @@ h5{
     background-color: burlywood;
     margin-top: 5px;
 }
+.search-in{
+    margin-left: 1000px;
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: burlywood;
+    border-color: burlywood;
+}
+.search-in:focus{
+    outline:none;
+    color: black;
+}
+.search-btn{
+    margin-left: 5px;
+    border-radius: 3px;
+    background-color: burlywood;
+}

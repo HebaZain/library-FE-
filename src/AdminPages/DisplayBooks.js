@@ -5,6 +5,7 @@ import { FaEdit } from "react-icons/fa";
 import { FaRegWindowClose } from "react-icons/fa";
 import * as ReactBootStarp from 'react-bootstrap';
 //import { createBrowserHistory } from "history";
+import { FaSearch } from "react-icons/fa";
 import {Link} from "react-router-dom";
 import './DisplayBooks.css';
 
@@ -91,6 +92,7 @@ class DisplayBooks extends Component{
             <td>{book.year}</td>
             <td>{book.hide}</td>
             <td> 
+               {/*  Delete Button */}
                 <button className='action-btn'>
                 <FaTrashAlt size={20}
                 onClick={ async () => {
@@ -109,15 +111,32 @@ class DisplayBooks extends Component{
                 }
                 }}
                 />
+                {/* Update Button */}
                 </button> 
-                 <Link to={ /* newTo */ '/Editbook/'+book.ID} ><button className='action-btn'  
-                //"/Editbook"
-                /* onClick={ () => this.returnID(book.ID)}   */>
+                 <Link to={ /* newTo */ '/Editbook/'+book.ID} ><button className='action-btn'>
                     <FaEdit size={20}/> 
                 </button>
-                 
                 </Link>
-                <button className='action-btn'><FaRegWindowClose size={20}/> </button>
+                {/* Hide Button */}
+                <button className='action-btn'
+                  onClick={async () => {
+                    let resHide = await fetch(" http://localhost:8080/libraryManApp-0.0.1-SNAPSHOT/HideServlet?ID=" + book.ID,{
+                    method:"GET",
+                    headers : { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                })
+                console.log(resHide)
+                if(resHide.ok){
+                    alert("Hide status Updated, please refresh the page")
+                }else {
+                    alert(" Hide ststus not Upgated")
+                }
+                }}
+                >
+                    <FaRegWindowClose size={20}/> 
+                </button>
             </td> 
         </tr>
         );
@@ -147,8 +166,12 @@ class DisplayBooks extends Component{
             <div>
                  <div className="navBar-displayBooks">
                 <FaBook size={20}/>  <h5 >All Books</h5>
+                {/* <input type="text" 
+                className='search-in'
+                placeholder='Serach'
+                ></input>
+                <button className='search-btn'> <FaSearch /></button> */}
                 </div>
-               {/*  {this.renderBooks} */}
                 <div className='display'>
                  <ReactBootStarp.Table striped bordered hover className='table-display'>
                         <thead>
