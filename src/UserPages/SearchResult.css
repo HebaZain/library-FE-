@@ -23,6 +23,7 @@
 }
 .to-flex-search{
     display: inline-grid;
+    /* display: block; */
     
 }
 .to-center{
@@ -41,4 +42,8 @@
 .align-btn-search{
     text-align: right;
     margin-top: -53px;
+}
+.justify-data{
+    text-align: center;
+    margin: 30px;
 }

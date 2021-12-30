@@ -7,6 +7,7 @@ import { FaArrowCircleLeft } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import {withRouter} from 'react-router';
 class SearchResult extends Component{
+    
     constructor(props){
         super(props)
     }
@@ -29,13 +30,52 @@ class SearchResult extends Component{
         this.setState({
             bookDetails:setbookDetails
         })
-        console.log("this is data",this.state.bookDetails)
-    }else{
+        console.log("this is data",this.state.bookDetails)   
+    }/* else{
         alert("This book in not avilalbe")
-    }
+    } */
         document.body.style.backgroundImage="none";
         document.body.style.backgroundColor="navajowhite";
     }
+
+     renderBooks = ()=>{
+        if(this.state.bookDetails.ID == 0){
+            alert("This book in not avilalbe")
+            return(
+                <div>
+                     <div className='to-center'>
+                    <div className="to-flex-search" id='toNone'>
+                        <div className="container-search">
+                            <div style={{display: "flex", justifyContent: "center",margin: "10px"}}>
+                            <FaBookOpen size={40}/>
+                            </div>
+                            <p className='justify-data'>No Data</p>
+                        </div>
+                    </div>  
+                    </div>
+                </div>
+            )
+        }else{
+            return(
+                <div>
+                     <div className='to-center'>
+                    <div className="to-flex-search" id='toNone'>
+                        <div className="container-search">
+                            <div style={{display: "flex", justifyContent: "center",margin: "10px"}}>
+                            <FaBookOpen size={40}/>
+                            </div>
+                            <p><FaAngleRight /> ID: {this.state.bookDetails.ID}</p>
+                            <p><FaAngleRight /> Title: {this.state.bookDetails.title}</p>
+                            <p><FaAngleRight /> Publisher: {this.state.bookDetails.publisher}</p>
+                            <p><FaAngleRight /> Category: {this.state.bookDetails.category}</p>
+                            <p><FaAngleRight /> Year: {this.state.bookDetails.year}</p>
+                        </div>
+                    </div>  
+                    </div>
+                </div>
+            )
+        }
+    } 
      
 
     render(){
@@ -50,22 +90,7 @@ class SearchResult extends Component{
                     </Link>
                 </div>
                 </div>
-                <div className='to-center'>
-
-                    <div className="to-flex-search">
-                        <div className="container-search">
-                            <div style={{display: "flex", justifyContent: "center",margin: "10px"}}>
-                            <FaBookOpen size={40}/>
-                            </div>
-                            <p><FaAngleRight /> ID: {this.state.bookDetails.ID}</p>
-                            <p><FaAngleRight /> Title: {this.state.bookDetails.title}</p>
-                            <p><FaAngleRight /> Publisher: {this.state.bookDetails.publisher}</p>
-                            <p><FaAngleRight /> Category: {this.state.bookDetails.category}</p>
-                            <p><FaAngleRight /> Year: {this.state.bookDetails.year}</p>
-                        </div>
-                    </div>  
-                    </div>
-              
+                {this.renderBooks()}
                 </div>
         )
     }
