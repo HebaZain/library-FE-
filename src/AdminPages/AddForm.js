@@ -1,5 +1,6 @@
 import React , {Component} from "react";
 import { FaArrowCircleRight } from "react-icons/fa";
+import { FaArrowCircleLeft } from "react-icons/fa";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import './AddForm.css';
 class AddForm extends Component{
@@ -78,12 +79,6 @@ class AddForm extends Component{
         //console.log("========")
         return(
             <div>
-                <div className="justifay-btn"> 
-                    <Link to="/displayBooks"><button className="navigate-display-page">
-                         Go To Display Books Page <FaArrowCircleRight size={20} />
-                    </button>
-                    </Link>
-                </div>
             <div className="Add-Container">
                 <h2>ADD NEW BOOK</h2>
                 <form className="add-form"  onSubmit={this.handleClick} method="post" action="addBook">
@@ -122,7 +117,7 @@ class AddForm extends Component{
                     </div>
 
                     <div className="category">
-                        <label>Category:</label><br></br>
+                        <label className="ca-align">Category:</label><br></br>
                         <input  className="input-add" 
                         type='text' 
                         id="category"
@@ -146,6 +141,12 @@ class AddForm extends Component{
                     <button className="addBook">ADD</button>
                 </form>
             </div>
+            <div className="justifay-btn"> 
+                    <Link to="/displayBooks"><button className="navigate-display-page">
+                         Go To Display Books Page <FaArrowCircleRight size={20} />
+                    </button>
+                    </Link>
+                </div>
         </div>
         )
     }

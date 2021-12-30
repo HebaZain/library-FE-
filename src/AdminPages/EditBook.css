@@ -40,3 +40,19 @@
     margin-top: 10px;
     margin-left: 95px;
 }
+.navigate-display-page-Edit{
+    margin: 10px;
+    margin-right: 30px;
+    border-radius: 10px;
+    background-color:burlywood;
+    border-color: burlywood;
+    height: 70px;
+    width: 300px;
+    /* margin-left: 1000px; */
+}
+.justifay-btn-Edit{
+    text-align: right;
+}
+.ca-align-edit{
+    padding-right: 204px;
+}

@@ -1,4 +1,6 @@
 import React , {Component} from "react";
+import { FaArrowCircleLeft } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import {withRouter} from 'react-router';
 
 import './EditBook.css';
@@ -95,67 +97,75 @@ class EditForm extends Component{
     render(){
         //console.log("========")
         return(
-            <div className="edit-Container">
-                <h2>EDIT BOOK DATA</h2>
-                <form className="edit-form"    onSubmit={this.handleSubmit}    >
-                    <div className="id">
-                        <label >Book ID:</label><br></br>
-                        <input className="input-edit" 
-                        type='text'  
-                        id="id"
-                        name="id"
-                        placeholder='input book id'
-                        defaultValue={this.state.ID} 
-                        onChange={this.handleChangeID}  />
-                    </div> 
+            <div>
+                    <div className="edit-Container">
+                        <h2>EDIT BOOK DATA</h2>
+                        <form className="edit-form"    onSubmit={this.handleSubmit}    >
+                            <div className="id">
+                                <label >Book ID:</label><br></br>
+                                <input className="input-edit" 
+                                type='text'  
+                                id="id"
+                                name="id"
+                                placeholder='input book id'
+                                defaultValue={this.state.ID} 
+                                onChange={this.handleChangeID}  />
+                            </div> 
 
-                    <div className="title">
-                        <label >Title:</label><br></br>
-                        <input  className="input-edit" 
-                        type='text' 
-                        id="title" 
-                        name="title"
-                        placeholder='input book title' 
-                        defaultValue={this.state.title}
-                        onChange={this.handleChangeTitle} 
-                        />
+                            <div className="title">
+                                <label >Title:</label><br></br>
+                                <input  className="input-edit" 
+                                type='text' 
+                                id="title" 
+                                name="title"
+                                placeholder='input book title' 
+                                defaultValue={this.state.title}
+                                onChange={this.handleChangeTitle} 
+                                />
+                            </div>
+
+                            <div className="publisher">
+                                <label >Publisher:</label><br></br>
+                                <input  className="input-edit" 
+                                type='text' 
+                                id="publisher" 
+                                placeholder='input publisher name'
+                                defaultValue={this.state.publisher}
+                                onChange={this.handleChangePub}
+                                />
+                            </div>
+
+                            <div className="category">
+                                <label className="ca-align-edit">Category:</label><br></br>
+                                <input  className="input-edit" 
+                                type='text' id="category"
+                                placeholder='input category'
+                                defaultValue={this.state.category} 
+                                onChange={this.handleChangeCa} 
+                                />
+                            </div>
+
+                            <div className="price">
+                                <label>Year:</label><br></br>
+                                <input  className="input-edit" 
+                                type='text' 
+                                id="price" 
+                                placeholder='input price' 
+                                defaultValue={this.state.year} 
+                                onChange={this.handleChangePr}  
+                                />
+                            </div>  
+                            
+                            <button className="submit-edit">SUBMIT</button>
+                        </form>
                     </div>
-
-                    <div className="publisher">
-                        <label >Publisher:</label><br></br>
-                        <input  className="input-edit" 
-                        type='text' 
-                        id="publisher" 
-                        placeholder='input publisher name'
-                        defaultValue={this.state.publisher}
-                        onChange={this.handleChangePub}
-                        />
-                    </div>
-
-                    <div className="category">
-                        <label>Category:</label><br></br>
-                        <input  className="input-edit" 
-                        type='text' id="category"
-                        placeholder='input category'
-                        defaultValue={this.state.category} 
-                        onChange={this.handleChangeCa} 
-                        />
-                    </div>
-
-                    <div className="price">
-                        <label>Year:</label><br></br>
-                        <input  className="input-edit" 
-                        type='text' 
-                        id="price" 
-                        placeholder='input price' 
-                        defaultValue={this.state.year} 
-                        onChange={this.handleChangePr}  
-                        />
-                    </div>  
-                    
-                    <button className="submit-edit">SUBMIT</button>
-                </form>
-            </div>
+                    <div className="justifay-btn-Edit"> 
+                    <Link to="/displayBooks"><button className="navigate-display-page-Edit">
+                    <FaArrowCircleLeft size={20}/> Return To Display Books Page  
+                    </button>
+                    </Link>
+                </div>
+        </div>
         )
     }
 }

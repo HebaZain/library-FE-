@@ -3,13 +3,23 @@ import { FaAddressBook } from "react-icons/fa";
 import { FaBookOpen } from "react-icons/fa";
 import { FaAngleRight } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
+import { FaArrowCircleLeft } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import './UserBooks.css';
 
 class UserBooks extends Component{
     state ={
         userBooks:[],
         bookAction:[],
-        bookFantasy:[]
+        bookFantasy:[], 
+        searchTitle: ""
+    }
+
+    handleSearch =(e) =>{
+        e.preventDefault()
+        this.setState({
+            searchTitle: e.target.value
+        })
     }
 
     async componentDidMount() {
@@ -50,11 +60,19 @@ class UserBooks extends Component{
             <div>
                 <div className="navBar-userBooks">
                 <FaAddressBook size={20}/>  <h5 className="user-books" >Hello</h5>
+                <div className='align-btn-user'>
+                    <Link to="/logout"><button className="navigate-logout">
+                        <FaArrowCircleLeft size={20}/> Logout  
+                        </button>
+                    </Link>
+                </div>
                  <input type="text" 
                 className='search-in'
                 placeholder='Serach'
+                value={this.state.searchTitle}
+                onChange={this.handleSearch}
                 ></input>
-                <button className='search-btn'> <FaSearch /></button> 
+                <Link to ={"/searchResult/"+this.state.searchTitle}><button className='search-btn'> <FaSearch /></button> </Link>
                 </div>
 
                 <div className="Action-books">

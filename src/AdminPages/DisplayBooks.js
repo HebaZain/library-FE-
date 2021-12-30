@@ -2,6 +2,7 @@ import React , {Component}  from 'react';
 import { FaBook } from "react-icons/fa";
 import { FaTrashAlt } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
+import { FaArrowCircleLeft } from "react-icons/fa";
 import { FaRegWindowClose } from "react-icons/fa";
 import * as ReactBootStarp from 'react-bootstrap';
 //import { createBrowserHistory } from "history";
@@ -165,12 +166,14 @@ class DisplayBooks extends Component{
         return(
             <div>
                  <div className="navBar-displayBooks">
-                <FaBook size={20}/>  <h5 >All Books</h5>
-                {/* <input type="text" 
-                className='search-in'
-                placeholder='Serach'
-                ></input>
-                <button className='search-btn'> <FaSearch /></button> */}
+                
+                    <FaBook size={20}/>  <h5 >All Books</h5>
+                    <div className='align-btn'>
+                    <Link to="/Admin"><button className="navigate-dashboard">
+                        <FaArrowCircleLeft size={20}/> Dashboard  
+                        </button>
+                    </Link>
+                </div>
                 </div>
                 <div className='display'>
                  <ReactBootStarp.Table striped bordered hover className='table-display'>
