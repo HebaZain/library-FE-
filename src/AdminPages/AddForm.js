@@ -2,6 +2,15 @@ import React , {Component} from "react";
 import { FaArrowCircleRight } from "react-icons/fa";
 import { FaArrowCircleLeft } from "react-icons/fa";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+/* import { Modal } from 'antd';
+import Dialog from "@material-ui/core/Dialog";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import Button from "@material-ui/core/Button"; */
+//import 'antd/dist/antd.css';
+import{FormWithConstraints, FieldFeedbacks, FieldFeedback} from 'react-form-with-constraints'
 import './AddForm.css';
 class AddForm extends Component{
     constructor(){
@@ -12,9 +21,56 @@ class AddForm extends Component{
                     Title: null,
                     Publisher: null,
                     Category: null,
-                    year: null
+                    year: null,
+                   /*  open:"true" */
+                     /* setIsModalVisible:"true",  */
         };
     }
+     /* handleToClose = () => {
+        this.setState({
+            open:"false"
+        })
+      }; */
+   /*  showModal = () => {
+        this.setState({
+            setIsModalVisible:"true"
+        })
+        
+      }; */
+     
+   /*  handleOk = () => {
+        this.setState({
+            setIsModalVisible:"false"
+        })
+      };
+    
+    handleCancel = () => {
+        this.setState({
+            setIsModalVisible:"false"
+        })
+      }; */ 
+      showModal = () =>{
+          /* return(
+            <Dialog open={this.state.open} onClose={this.handleToClose}>
+            <DialogTitle>{"Add Book?"}</DialogTitle>
+            <DialogContent>
+              <DialogContentText>
+                Book Added!
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={this.handleToClose} 
+                      color="primary" autoFocus>
+                Close
+              </Button>
+            </DialogActions>
+          </Dialog>
+          ) */ 
+           
+                            
+                    
+
+      }
     handleChangeID =(e) => {
         this.setState({
             Id: e.target.value,
@@ -65,7 +121,8 @@ class AddForm extends Component{
 
          console.log(response);
          if(response.ok){
-             alert("Book added")
+          /*    {this.showModal()} */
+              alert("Book added") 
          }else{
              alert("Not added")
          }
@@ -78,10 +135,17 @@ class AddForm extends Component{
     render(){
         //console.log("========")
         return(
+            
             <div>
             <div className="Add-Container">
                 <h2>ADD NEW BOOK</h2>
-                <form className="add-form"  onSubmit={this.handleClick} method="post" action="addBook">
+               {/*  <Modal title="Basic Modal" 
+                            visible={this.state.setIsModalVisible}
+                            onOk={this.handleOk} 
+                            onCancel={this.handleCancel}>
+                                <p>Book added!</p>
+                </Modal>    */}        
+                <FormWithConstraints className="add-form"  onSubmit={this.handleClick} method="post" action="addBook">
                     <div className="id">
                         <label >Book ID:</label><br></br>
                         <input className="input-add" 
@@ -90,7 +154,10 @@ class AddForm extends Component{
                         name="id"
                         placeholder='input book id' 
                         value={this.state.Id}
-                        onChange={this.handleChangeID} />
+                        required onChange={this.handleChangeID} />
+                        <FieldFeedbacks for="id">
+                        <FieldFeedback when="valueMissing"></FieldFeedback>
+                        </FieldFeedbacks>
                     </div> 
 
                     <div className="title">
@@ -101,8 +168,11 @@ class AddForm extends Component{
                         name="title"
                         placeholder='input book title' 
                         value={this.state.Title}
-                        onChange={this.handleChangeTitle}
+                        required onChange={this.handleChangeTitle}
                         />
+                        <FieldFeedbacks for="title">
+                        <FieldFeedback when="valueMissing"></FieldFeedback>
+                        </FieldFeedbacks>
                     </div>
 
                     <div className="publisher">
@@ -123,7 +193,7 @@ class AddForm extends Component{
                         id="category"
                         placeholder='input category'
                         value={this.state.Category}
-                        onChange={this.handleChangeCa}
+                        required onChange={this.handleChangeCa}
                         />
                     </div>
 
@@ -134,12 +204,15 @@ class AddForm extends Component{
                         id="price" 
                         placeholder='input price' 
                         value={this.state.year}
-                        onChange={this.handleChangePr} 
+                        required onChange={this.handleChangePr} 
                         />
+                        {/* <FieldFeedbacks for="price">
+                        <FieldFeedback when="valueMissing"></FieldFeedback>
+                        </FieldFeedbacks> */}
                     </div>  
                     
                     <button className="addBook">ADD</button>
-                </form>
+                </FormWithConstraints>
             </div>
             <div className="justifay-btn"> 
                     <Link to="/displayBooks"><button className="navigate-display-page">

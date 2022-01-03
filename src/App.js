@@ -11,6 +11,8 @@ import SearchResult from "./UserPages/SearchResult";
 //npm i react-icons
 //npm i react-bootstrap
 //add in index.html <bootstrap link>
+//npm i react-form-with-constraints
+//npm install @material-ui/core
 
 function App() {
   

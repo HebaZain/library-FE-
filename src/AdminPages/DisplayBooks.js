@@ -5,6 +5,7 @@ import { FaEdit } from "react-icons/fa";
 import { FaArrowCircleLeft } from "react-icons/fa";
 import { FaRegWindowClose } from "react-icons/fa";
 import * as ReactBootStarp from 'react-bootstrap';
+import { Modal, Button } from 'antd';
 //import { createBrowserHistory } from "history";
 import { FaSearch } from "react-icons/fa";
 import {Link} from "react-router-dom";
@@ -16,9 +17,28 @@ class DisplayBooks extends Component{
         this.state={
             books:[],
             isLoading:"false",
-            errorFound:"false"
+            errorFound:"false",
+            /* setIsModalVisible:"true", */
         }
     } 
+   /*  showModal = () => {
+        this.setState({
+            setIsModalVisible:"true"
+        })
+        
+      }; */
+    
+    /* handleOk = () => {
+        this.setState({
+            setIsModalVisible:"false"
+        })
+      };
+    
+    handleCancel = () => {
+        this.setState({
+            setIsModalVisible:"false"
+        })
+      }; */
   /*   async function getdata() {
             let res = await fetch("http://localhost:8080/libraryManApp-0.0.1-SNAPSHOT/DisplayBooksServlet",{
                 method:"GET",
@@ -34,11 +54,13 @@ class DisplayBooks extends Component{
         }  */
 
     async componentDidMount(){
-        let res = await fetch("http://localhost:8080/libraryManApp-0.0.1-SNAPSHOT/DisplayBooksServlet",{
+        let res = await fetch('http://localhost:8080/libraryManApp-0.0.1-SNAPSHOT/DisplayBooksServlet'
+            /* "http://localhost:8080/libraryManApp-0.0.1-SNAPSHOT/DisplayBooksServlet" */,{
             method:"GET",
             headers : { 
                 'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                'Accept': 'application/json',
+                /* "Access-Control-Allow-Origin": "*" */
                }
         })
         // console.log(res.json());
@@ -97,19 +119,25 @@ class DisplayBooks extends Component{
                 <button className='action-btn'>
                 <FaTrashAlt size={20}
                 onClick={ async () => {
-                    let resDelete = await fetch(" http://localhost:8080/libraryManApp-0.0.1-SNAPSHOT/DeleteBookServlet?ID=" + book.ID,{
-                    method:"GET",
-                    headers : { 
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                })
-                console.log(resDelete)
-                if(resDelete.ok){
-                    alert("Record deleted, please refresh the page")
-                }else {
-                    alert("Not deleted")
-                }
+                        let resDelete = await fetch(" http://localhost:8080/libraryManApp-0.0.1-SNAPSHOT/DeleteBookServlet?ID=" + book.ID,{
+                            method:"GET",
+                            headers : { 
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
+                            },
+                        })
+                        console.log(resDelete)
+                        if(resDelete.ok){
+                         /*    return(
+                                <Modal title="Basic Modal" 
+                                visible="true"
+                                onOk={this.handleOk()} 
+                                onCancel={this.handleCancel()}>
+                                    <p>Record deleted, please refresh the page</p>
+                                </Modal>
+                            ) */
+                            alert("Record deleted, please refresh the page") 
+                        }
                 }}
                 />
                 {/* Update Button */}

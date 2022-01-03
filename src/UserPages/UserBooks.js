@@ -54,27 +54,38 @@ class UserBooks extends Component{
         document.body.style.backgroundImage="none";
         document.body.style.backgroundColor="navajowhite";
     } 
-    render(){
-        
-        return(
-            <div>
-                <div className="navBar-userBooks">
-                <FaAddressBook size={20}/>  <h5 className="user-books" >Hello</h5>
-                <div className='align-btn-user'>
-                    <Link to="/logout"><button className="navigate-logout">
-                        <FaArrowCircleLeft size={20}/> Logout  
-                        </button>
-                    </Link>
-                </div>
-                 <input type="text" 
-                className='search-in'
-                placeholder='Serach'
-                value={this.state.searchTitle}
-                onChange={this.handleSearch}
-                ></input>
-                <Link to ={"/searchResult/"+this.state.searchTitle}><button className='search-btn'> <FaSearch /></button> </Link>
-                </div>
 
+    renderWithSearch = () =>{
+    
+        const search = <div className="Fan-books">
+                <h4 className="category"> Seach Result </h4>
+                {this.state.userBooks.filter(fa =>{
+                    if(this.state.searchTitle == ""){
+                        return fa
+                    }
+                    else if (fa.title.toLowerCase().includes(this.state.searchTitle.toLowerCase())){
+                        return fa
+                    }
+                }).map(fa =>{
+                        return(
+                            <div className="to-flex">
+                                <div className="container-action">
+                                    <div style={{display: "flex", justifyContent: "center",margin: "10px"}}>
+                                    <FaBookOpen size={40}/>
+                                    </div>
+                                <p><FaAngleRight /> Title: {fa.title}</p>
+                                <p><FaAngleRight /> Publisher: {fa.publisher}</p>
+                                <p><FaAngleRight /> Category: {fa.category}</p>
+                                <p><FaAngleRight /> Year: {fa.year}</p>
+                                </div>
+                            </div>    
+                        )
+                    })}
+            </div>
+
+        if(this.state.searchTitle == ""){
+            return (
+                <div>
                 <div className="Action-books">
                     <h4 className="category"> Action </h4>
                     {this.state.bookAction.map(action =>{
@@ -112,8 +123,39 @@ class UserBooks extends Component{
                     })}
                     
                 </div>
+            </div>
 
+            )
+        }
+        else{
+            return search
+        }
+    }
 
+    render(){
+        
+        return(
+            <div>
+                <div className="navBar-userBooks">
+                <FaAddressBook size={20}/>  <h5 className="user-books" >Hello</h5>
+                <div className='align-btn-user'>
+                    <Link to="/logout"><button className="navigate-logout">
+                        <FaArrowCircleLeft size={20}/> Logout  
+                        </button>
+                    </Link>
+                </div>
+                {/* <Link to ={"/searchResult/"+this.state.searchTitle}><button className='search-btn'> <FaSearch /></button> </Link> */}
+                </div>
+                <div>
+                <input type="text" 
+                 className='search-in'
+                placeholder='Serach By Title'
+                value={this.state.searchTitle}
+                onChange= {this.handleSearch.bind(this)}
+                ></input>
+                </div>
+
+                {this.renderWithSearch()}
 
             </div>
         )
@@ -123,3 +165,13 @@ class UserBooks extends Component{
 
 }
 export default UserBooks;
+
+/* ()=>{{
+    this.userBooks.filter( book => {
+        return(
+            Object.keys(book).some(key =>
+                book[key].toString().toLowerCase().includes(toString().toLowerCase())
+                )
+        )
+    })
+}} */
